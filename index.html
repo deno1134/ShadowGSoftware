@@ -1,0 +1,1136 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AimVault - Premium Hile Çözümleri</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<script>tailwind.config={theme:{extend:{colors:{primary:'#ff4655',secondary:'#0f1923'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+<style>
+:where([class^="ri-"])::before { content: "\f3c2"; }
+body {
+font-family: 'Poppins', sans-serif;
+background-color: #0f1923;
+color: #ffffff;
+}
+.hero-gradient {
+background: linear-gradient(90deg, rgba(15,25,35,0.9) 0%, rgba(15,25,35,0.7) 50%, rgba(15,25,35,0.4) 100%);
+}
+.card-hover {
+transition: all 0.3s ease;
+}
+.card-hover:hover {
+transform: translateY(-5px);
+box-shadow: 0 10px 25px rgba(255, 70, 85, 0.2);
+}
+.feature-card {
+background: rgba(25, 35, 45, 0.7);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.pricing-card {
+background: rgba(25, 35, 45, 0.7);
+backdrop-filter: blur(10px);
+border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.pricing-card:hover {
+border-color: #ff4655;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.accordion-content {
+max-height: 0;
+opacity: 0;
+overflow: hidden;
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+padding-top: 0;
+padding-bottom: 0;
+}
+.accordion-active .accordion-content {
+max-height: 500px;
+opacity: 1;
+padding-top: 1rem;
+padding-bottom: 1rem;
+animation: fadeIn 0.4s ease forwards;
+}
+.accordion-icon {
+transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.accordion-active .accordion-icon {
+transform: rotate(180deg);
+}
+.feature-card {
+animation: fadeInUp 0.6s ease backwards;
+animation-delay: calc(var(--card-index, 0) * 0.1s);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.card-hover {
+transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.card-hover:hover {
+transform: translateY(-8px);
+box-shadow: 0 20px 40px rgba(255, 70, 85, 0.2);
+}
+.custom-checkbox {
+position: relative;
+padding-left: 30px;
+cursor: pointer;
+}
+.custom-checkbox input {
+position: absolute;
+opacity: 0;
+cursor: pointer;
+}
+.checkmark {
+position: absolute;
+top: 0;
+left: 0;
+height: 20px;
+width: 20px;
+background-color: rgba(255, 255, 255, 0.1);
+border-radius: 4px;
+border: 1px solid rgba(255, 255, 255, 0.3);
+}
+.custom-checkbox:hover input ~ .checkmark {
+background-color: rgba(255, 255, 255, 0.2);
+}
+.custom-checkbox input:checked ~ .checkmark {
+background-color: #ff4655;
+border-color: #ff4655;
+}
+.checkmark:after {
+content: "";
+position: absolute;
+display: none;
+}
+.custom-checkbox input:checked ~ .checkmark:after {
+display: block;
+}
+.custom-checkbox .checkmark:after {
+left: 7px;
+top: 3px;
+width: 6px;
+height: 12px;
+border: solid white;
+border-width: 0 2px 2px 0;
+transform: rotate(45deg);
+}
+.switch {
+position: relative;
+display: inline-block;
+width: 50px;
+height: 24px;
+}
+.switch input {
+opacity: 0;
+width: 0;
+height: 0;
+}
+.slider {
+position: absolute;
+cursor: pointer;
+top: 0;
+left: 0;
+right: 0;
+bottom: 0;
+background-color: rgba(255, 255, 255, 0.1);
+transition: .4s;
+border-radius: 34px;
+}
+.slider:before {
+position: absolute;
+content: "";
+height: 18px;
+width: 18px;
+left: 3px;
+bottom: 3px;
+background-color: white;
+transition: .4s;
+border-radius: 50%;
+}
+input:checked + .slider {
+background-color: #ff4655;
+}
+input:checked + .slider:before {
+transform: translateX(26px);
+}
+.scroll-indicator {
+animation: bounce 2s infinite;
+}
+@keyframes bounce {
+0%, 20%, 50%, 80%, 100% {
+transform: translateY(0);
+}
+40% {
+transform: translateY(-10px);
+}
+60% {
+transform: translateY(-5px);
+}
+}
+.toast {
+position: fixed;
+bottom: 20px;
+right: 20px;
+background: rgba(255, 70, 85, 0.9);
+color: white;
+padding: 12px 20px;
+border-radius: 8px;
+box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+display: flex;
+align-items: center;
+z-index: 1000;
+transform: translateY(100px);
+opacity: 0;
+transition: all 0.3s ease;
+}
+.toast.show {
+transform: translateY(0);
+opacity: 1;
+}
+@keyframes textGradientShift {
+   0% {
+   background-position: 0% 50%;
+  }
+   100% {
+   background-position: 100% 50%;
+  }
+}
+
+.animate-text {
+  background-size: 200% 200%;
+  animation: textGradientShift 4s ease infinite;
+}
+.carousel-container {
+overflow-x: auto;
+scrollbar-width: none;
+-ms-overflow-style: none;
+}
+.carousel-container::-webkit-scrollbar {
+display: none;
+}
+.parallax {
+transition: transform 0.2s ease-out;
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="fixed top-0 left-0 w-full z-50 bg-opacity-80 bg-[#0f1923] backdrop-blur-md border-b border-gray-800">
+<div class="container mx-auto px-4 py-4">
+<div class="flex justify-between items-center">
+<div class="flex items-center">
+<a href="#" class="text-3xl font-bold mr-8 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent animate-text">aim.vault</a>
+<nav class="hidden md:flex space-x-6">
+<a href="#features" class="text-gray-300 hover:text-primary transition-colors">Özellikler</a>
+<a href="#pricing" class="text-gray-300 hover:text-primary transition-colors">Fiyatlandırma</a>
+<a href="#faq" class="text-gray-300 hover:text-primary transition-colors">SSS</a>
+<a href="#security" class="text-gray-300 hover:text-primary transition-colors">Güvenlik</a>
+</nav>
+</div>
+<div class="flex items-center space-x-4">
+<a href="#" class="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+<i class="ri-discord-fill ri-lg text-gray-300"></i>
+</a>
+<a href="#" class="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+<i class="ri-instagram-fill ri-lg text-gray-300"></i>
+</a>
+<a href="#" class="hidden md:flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+<i class="ri-telegram-fill ri-lg text-gray-300"></i>
+</a>
+<button id="mobileMenuButton" class="md:hidden flex items-center justify-center w-10 h-10 rounded-full bg-gray-800">
+<i class="ri-menu-line ri-lg text-gray-300"></i>
+</button>
+</div>
+</div>
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="md:hidden hidden pt-4 pb-2 border-t border-gray-800 mt-4">
+<nav class="flex flex-col space-y-3">
+<a href="#features" class="text-gray-300 hover:text-primary transition-colors py-2">Özellikler</a>
+<a href="#pricing" class="text-gray-300 hover:text-primary transition-colors py-2">Fiyatlandırma</a>
+<a href="#faq" class="text-gray-300 hover:text-primary transition-colors py-2">SSS</a>
+<a href="#security" class="text-gray-300 hover:text-primary transition-colors py-2">Güvenlik</a>
+<div class="flex space-x-4 pt-2">
+<a href="#" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+<i class="ri-discord-fill ri-lg text-gray-300"></i>
+</a>
+<a href="#" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+<i class="ri-instagram-fill ri-lg text-gray-300"></i>
+</a>
+<a href="#" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+<i class="ri-telegram-fill ri-lg text-gray-300"></i>
+</a>
+</div>
+</nav>
+</div>
+</div>
+</header>
+<!-- Hero Section -->
+<section class="relative min-h-screen flex items-center pt-20" style="background-image: url('https://r2.fakecrime.bio/uploads/6c42cc88-ba53-459b-b4ff-ee6919d6dff7.jpeg'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 hero-gradient"></div>
+<div class="container mx-auto px-4 py-20 relative z-10">
+<div class="max-w-3xl">
+<h1 class="text-4xl md:text-6xl font-bold mb-4 text-white leading-tight">
+<span class="text-primary">Valorant</span>'da <br>Rakiplerinizin Bir Adım Önüne Geçin
+</h1>
+<p class="text-xl text-gray-300 mb-8">AimVault'un gelişmiş teknolojisi ile tespit edilemeyen, güvenli ve sürekli güncellenen Valorant hileleri. 2025'in en gelişmiş çözümü.</p>
+<div class="flex flex-col sm:flex-row gap-4 mb-12">
+<a href="#pricing" class="bg-primary hover:bg-opacity-90 text-white font-semibold py-3 px-8 !rounded-button shadow-lg shadow-primary/20 transition-all whitespace-nowrap">
+Hemen Satın Al
+</a>
+<a href="#features" class="bg-white bg-opacity-10 hover:bg-opacity-20 text-white font-semibold py-3 px-8 !rounded-button border border-white border-opacity-20 transition-all whitespace-nowrap">
+Özellikleri Keşfet
+</a>
+</div>
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 text-gray-300">
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 flex items-center justify-center rounded-full bg-green-500 bg-opacity-20">
+<i class="ri-check-line ri-sm text-green-500"></i>
+</div>
+<span>24/7 Aktif</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 flex items-center justify-center rounded-full bg-green-500 bg-opacity-20">
+<i class="ri-check-line ri-sm text-green-500"></i>
+</div>
+<span>Son Güncelleme: 24.06.2025</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="w-6 h-6 flex items-center justify-center rounded-full bg-green-500 bg-opacity-20">
+<i class="ri-check-line ri-sm text-green-500"></i>
+</div>
+<span>5000+ Mutlu Kullanıcı</span>
+</div>
+</div>
+</div>
+</div>
+<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 text-white scroll-indicator">
+<i class="ri-arrow-down-line ri-2x"></i>
+</div>
+</section>
+<!-- Features Section -->
+<section id="features" class="py-20 bg-[#0f1923]">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Üstün <span class="text-primary">Özellikler</span></h2>
+<p class="text-gray-400 max-w-2xl mx-auto">AimVault'nün gelişmiş teknolojisi ile rakiplerinizin bir adım önüne geçin. Tespit edilemeyen, güvenli ve sürekli güncellenen özellikler.</p>
+</div>
+<div class="carousel-container pb-6">
+<div class="flex gap-6 w-max">
+<div class="feature-card card-hover w-[300px] p-6 rounded-lg flex flex-col">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-20 mb-4">
+<i class="ri-crosshair-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2">Aimbot</h3>
+<p class="text-gray-400 mb-4">Gelişmiş hedefleme sistemi ile rakiplerinizi anında etkisiz hale getirin. Özelleştirilebilir ayarlar ile kendi oyun stilinize göre düzenleyin.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-green-500 flex items-center gap-1">
+<i class="ri-shield-check-line"></i>
+<span>Tespit Edilemez</span>
+</span>
+<span class="text-xs text-gray-500">v2.4.6</span>
+</div>
+</div>
+<div class="feature-card card-hover w-[300px] p-6 rounded-lg flex flex-col">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-20 mb-4">
+<i class="ri-eye-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2">ESP Wallhack</h3>
+<p class="text-gray-400 mb-4">Duvarların arkasını görün, rakiplerinizin konumunu, sağlık durumunu ve silahlarını öğrenin. Taktiksel avantaj sizin elinizde.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-green-500 flex items-center gap-1">
+<i class="ri-shield-check-line"></i>
+<span>Tespit Edilemez</span>
+</span>
+<span class="text-xs text-gray-500">v3.1.2</span>
+</div>
+</div>
+<div class="feature-card card-hover w-[300px] p-6 rounded-lg flex flex-col">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-20 mb-4">
+<i class="ri-radar-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2">Radar Hack</h3>
+<p class="text-gray-400 mb-4">Özel radar sistemi ile haritadaki tüm oyuncuların konumunu anlık olarak görün. Baskınlara hazırlıklı olun, pusulara düşmeyin.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-green-500 flex items-center gap-1">
+<i class="ri-shield-check-line"></i>
+<span>Tespit Edilemez</span>
+</span>
+<span class="text-xs text-gray-500">v1.9.8</span>
+</div>
+</div>
+<div class="feature-card card-hover w-[300px] p-6 rounded-lg flex flex-col">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-20 mb-4">
+<i class="ri-speed-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2">No Recoil</h3>
+<p class="text-gray-400 mb-4">Silahınızın geri tepmesini tamamen ortadan kaldırın. Her atışınız hedefi tam isabetle vursun, spray kontrolünde ustalaşın.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-green-500 flex items-center gap-1">
+<i class="ri-shield-check-line"></i>
+<span>Tespit Edilemez</span>
+</span>
+<span class="text-xs text-gray-500">v2.7.3</span>
+</div>
+</div>
+<div class="feature-card card-hover w-[300px] p-6 rounded-lg flex flex-col">
+<div class="w-12 h-12 flex items-center justify-center rounded-full bg-primary bg-opacity-20 mb-4">
+<i class="ri-ghost-line ri-lg text-primary"></i>
+</div>
+<h3 class="text-xl font-semibold mb-2">Skin Changer</h3>
+<p class="text-gray-400 mb-4">Tüm premium skinleri ücretsiz kullanın. Rakiplerinizi etkileyici skinlerinizle şaşırtın. Sadece sizin ekranınızda görünür.</p>
+<div class="mt-auto flex items-center justify-between">
+<span class="text-green-500 flex items-center gap-1">
+<i class="ri-shield-check-line"></i>
+<span>Tespit Edilemez</span>
+</span>
+<span class="text-xs text-gray-500">v4.0.1</span>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center">
+<a href="#pricing" class="inline-flex items-center justify-center gap-2 bg-white bg-opacity-10 hover:bg-opacity-20 text-white font-semibold py-3 px-8 !rounded-button border border-white border-opacity-20 transition-all whitespace-nowrap">
+<span>Tüm Özellikleri Keşfet</span>
+<i class="ri-arrow-right-line"></i>
+</a>
+</div>
+</div>
+</section>
+<!-- Why Choose Us Section -->
+<section class="py-20 bg-[#131e29]">
+<div class="container mx-auto px-4">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div>
+<h2 class="text-3xl md:text-4xl font-bold mb-6">Neden <span class="text-primary">AimVault</span> Hileleri?</h2>
+<p class="text-gray-400 mb-8">2025'in en gelişmiş Valorant hile çözümünü sunuyoruz. Güvenlik, performans ve kullanım kolaylığı bizim önceliğimiz.</p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-primary bg-opacity-20">
+<i class="ri-shield-check-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-1">%100 Tespit Edilemez</h3>
+<p class="text-gray-400">Anti-cheat sistemlerini bypass eden gelişmiş teknoloji. Hesap güvenliğiniz bizim için önemli.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-primary bg-opacity-20">
+<i class="ri-refresh-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-1">Sürekli Güncelleme</h3>
+<p class="text-gray-400">Oyun güncellemelerinden hemen sonra hile yazılımımız da güncellenir. Her zaman güncel kalın.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-primary bg-opacity-20">
+<i class="ri-customer-service-2-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-1">7/24 Destek</h3>
+<p class="text-gray-400">Discord üzerinden profesyonel ekibimiz her zaman yanınızda. Sorularınıza anında cevap alın.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-primary bg-opacity-20">
+<i class="ri-user-settings-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-1">Özelleştirilebilir Ayarlar</h3>
+<p class="text-gray-400">Kendi oyun stilinize göre tüm özellikleri özelleştirin. Kullanıcı dostu arayüz ile kolay ayarlama.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -inset-4 bg-primary bg-opacity-10 rounded-xl blur-xl"></div>
+<div class="relative bg-[#1a2530] p-6 rounded-lg border border-gray-800">
+<div class="bg-[#131e29] p-4 rounded mb-6 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-red-500"></div>
+<div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+<div class="w-3 h-3 rounded-full bg-green-500"></div>
+</div>
+<div class="text-xs text-gray-400">AimVault v3.1</div>
+</div>
+<div class="space-y-4 mb-6">
+<div class="flex justify-between items-center">
+<span class="text-gray-300">Aimbot</span>
+<label class="switch">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<span class="text-gray-400 text-sm">Smoothness</span>
+<span class="text-gray-400 text-sm">75%</span>
+</div>
+<div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-primary w-3/4 rounded-full"></div>
+</div>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-300">ESP</span>
+<label class="switch">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-300">Radar</span>
+<label class="switch">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-300">No Recoil</span>
+<label class="switch">
+<input type="checkbox" checked>
+<span class="slider"></span>
+</label>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-gray-300">Skin Changer</span>
+<label class="switch">
+<input type="checkbox">
+<span class="slider"></span>
+</label>
+</div>
+</div>
+<div class="bg-[#131e29] p-3 rounded flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-3 h-3 rounded-full bg-green-500"></div>
+<span class="text-green-500 text-sm">Aktif</span>
+</div>
+<div class="text-xs text-gray-400">Son Güncelleme: 24.06.2025</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Pricing Section -->
+<section id="pricing" class="py-20 bg-[#0f1923]">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Uygun <span class="text-primary">Fiyatlandırma</span></h2>
+<p class="text-gray-400 max-w-2xl mx-auto">Bütçenize uygun paketlerle premium hile deneyimini yaşayın. Tüm paketler tam özellik erişimi içerir.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="pricing-card card-hover p-6 rounded-lg">
+<div class="mb-6">
+<h3 class="text-xl font-semibold mb-1">Günlük Paket</h3>
+<p class="text-gray-400 text-sm">Kısa süreli deneme için ideal</p>
+</div>
+<div class="mb-6">
+<div class="flex items-end gap-1 mb-4">
+<span class="text-4xl font-bold">₺120</span>
+<span class="text-gray-400 mb-1">/gün</span>
+</div>
+<ul class="space-y-3 mb-6">
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">Tüm Premium Özellikler</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">24 Saat Tam Erişim</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">Discord Destek</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-close-line text-gray-500 mt-0.5"></i>
+<span class="text-gray-500">Öncelikli Destek</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-close-line text-gray-500 mt-0.5"></i>
+<span class="text-gray-500">VIP Özellikler</span>
+</li>
+</ul>
+</div>
+<a href="#" class="discord-redirect block w-full bg-white bg-opacity-10 hover:bg-opacity-20 text-white text-center font-semibold py-3 px-6 !rounded-button border border-white border-opacity-20 transition-all whitespace-nowrap">
+Discord'dan Satın Al
+</a>
+</div>
+<div class="pricing-card card-hover p-6 rounded-lg relative overflow-hidden">
+<div class="absolute -right-12 top-6 bg-primary text-white px-12 py-1 transform rotate-45 text-sm font-semibold">
+Popüler
+</div>
+<div class="mb-6">
+<h3 class="text-xl font-semibold mb-1">Haftalık Paket</h3>
+<p class="text-gray-400 text-sm">En çok tercih edilen paket</p>
+</div>
+<div class="mb-6">
+<div class="flex items-end gap-1 mb-4">
+<span class="text-4xl font-bold">₺450</span>
+<span class="text-gray-400 mb-1">/hafta</span>
+</div>
+<ul class="space-y-3 mb-6">
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">Tüm Premium Özellikler</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">7 Gün Tam Erişim</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">Discord Destek</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">Öncelikli Destek</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-close-line text-gray-500 mt-0.5"></i>
+<span class="text-gray-500">VIP Özellikler</span>
+</li>
+</ul>
+</div>
+<a href="#" class="discord-redirect block w-full bg-primary hover:bg-opacity-90 text-white text-center font-semibold py-3 px-6 !rounded-button shadow-lg shadow-primary/20 transition-all whitespace-nowrap">
+Discord'dan Satın Al
+</a>
+</div>
+<div class="pricing-card card-hover p-6 rounded-lg">
+<div class="mb-6">
+<h3 class="text-xl font-semibold mb-1">Aylık VIP Paket</h3>
+<p class="text-gray-400 text-sm">Profesyonel oyuncular için</p>
+</div>
+<div class="mb-6">
+<div class="flex items-end gap-1 mb-4">
+<span class="text-4xl font-bold">₺1200</span>
+<span class="text-gray-400 mb-1">/ay</span>
+</div>
+<ul class="space-y-3 mb-6">
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">Tüm Premium Özellikler</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">30 Gün Tam Erişim</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">Discord Destek</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">Öncelikli Destek</span>
+</li>
+<li class="flex items-start gap-2">
+<i class="ri-check-line text-green-500 mt-0.5"></i>
+<span class="text-gray-300">VIP Özellikler</span>
+</li>
+</ul>
+</div>
+<a href="#" class="discord-redirect block w-full bg-white bg-opacity-10 hover:bg-opacity-20 text-white text-center font-semibold py-3 px-6 !rounded-button border border-white border-opacity-20 transition-all whitespace-nowrap">
+Discord'dan Satın Al
+</a>
+</div>
+</div>
+<div class="mt-12 text-center">
+<p class="text-gray-400 mb-4">Özel paket ve fiyatlandırma için Discord sunucumuza katılın</p>
+<a href="#" class="inline-flex items-center justify-center gap-2 bg-[#5865F2] hover:bg-opacity-90 text-white font-semibold py-3 px-8 !rounded-button transition-all whitespace-nowrap">
+<i class="ri-discord-fill"></i>
+<span>Discord Sunucumuza Katılın</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Security Section -->
+<section id="security" class="py-20 bg-[#131e29]">
+<div class="container mx-auto px-4">
+<div class="grid md:grid-cols-2 gap-12 items-center">
+<div class="order-2 md:order-1">
+<div class="relative">
+<div class="absolute -inset-4 bg-primary bg-opacity-10 rounded-xl blur-xl"></div>
+<div class="relative bg-[#1a2530] p-6 rounded-lg border border-gray-800">
+<div class="bg-[#131e29] p-4 rounded mb-6">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-10 h-10 flex items-center justify-center rounded-full bg-green-500 bg-opacity-20">
+<i class="ri-shield-check-line ri-lg text-green-500"></i>
+</div>
+<div>
+<h4 class="font-semibold">Güvenlik Durumu</h4>
+<p class="text-green-500 text-sm">Tüm Sistemler Aktif</p>
+</div>
+</div>
+<div class="space-y-3">
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-gray-400 text-sm">Anti-Cheat Koruması</span>
+<span class="text-green-500 text-sm">Aktif</span>
+</div>
+<div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-full rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-gray-400 text-sm">Tespit Edilemezlik</span>
+<span class="text-green-500 text-sm">%99.8</span>
+</div>
+<div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-[99.8%] rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-gray-400 text-sm">Sunucu Durumu</span>
+<span class="text-green-500 text-sm">Çevrimiçi</span>
+</div>
+<div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-full rounded-full"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1">
+<span class="text-gray-400 text-sm">Güncelleme Durumu</span>
+<span class="text-green-500 text-sm">Güncel</span>
+</div>
+<div class="h-2 bg-gray-700 rounded-full overflow-hidden">
+<div class="h-full bg-green-500 w-full rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-[#131e29] p-4 rounded">
+<h4 class="font-semibold mb-3">Son Güncellemeler</h4>
+<div class="space-y-3">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 bg-opacity-20 mt-0.5">
+<i class="ri-refresh-line text-blue-500"></i>
+</div>
+<div>
+<p class="text-sm font-medium">Valorant Patch Uyumluluğu</p>
+<p class="text-xs text-gray-400">24.06.2025 - 08:45</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 bg-opacity-20 mt-0.5">
+<i class="ri-shield-check-line text-blue-500"></i>
+</div>
+<div>
+<p class="text-sm font-medium">Anti-Cheat Bypass Güncellemesi</p>
+<p class="text-xs text-gray-400">22.06.2025 - 14:30</p>
+</div>
+</div>
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 flex items-center justify-center rounded-full bg-blue-500 bg-opacity-20 mt-0.5">
+<i class="ri-code-line text-blue-500"></i>
+</div>
+<div>
+<p class="text-sm font-medium">Aimbot İyileştirmeleri</p>
+<p class="text-xs text-gray-400">20.06.2025 - 11:15</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="order-1 md:order-2">
+<h2 class="text-3xl md:text-4xl font-bold mb-6">Maksimum <span class="text-primary">Güvenlik</span></h2>
+<p class="text-gray-400 mb-8">AimVault'nün gelişmiş güvenlik sistemi ile hesabınız her zaman güvende. Anti-cheat sistemlerini bypass eden teknolojimiz ile ban riski olmadan oynayın.</p>
+<div class="space-y-6">
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-primary bg-opacity-20">
+<i class="ri-fingerprint-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-1">HWID Spoofer</h3>
+<p class="text-gray-400">Donanım kimliğinizi değiştirerek tespit edilme riskini ortadan kaldırır. Ban sonrası bile güvenle kullanın.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-primary bg-opacity-20">
+<i class="ri-eye-off-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-1">Kernel Level Bypass</h3>
+<p class="text-gray-400">Vanguard anti-cheat sistemini kernel seviyesinde bypass ederek maksimum güvenlik sağlar.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-primary bg-opacity-20">
+<i class="ri-lock-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-1">Şifreli İletişim</h3>
+<p class="text-gray-400">Sunucularımızla olan tüm iletişim end-to-end şifreleme ile korunur. Verileriniz güvende kalır.</p>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-full bg-primary bg-opacity-20">
+<i class="ri-shield-flash-line ri-lg text-primary"></i>
+</div>
+<div>
+<h3 class="text-xl font-semibold mb-1">Otomatik Güncelleme</h3>
+<p class="text-gray-400">Oyun güncellemelerinden sonra otomatik olarak güncellenir. Her zaman en son sürümü kullanın.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- FAQ Section -->
+<section id="faq" class="py-20 bg-[#0f1923]">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Sıkça Sorulan <span class="text-primary">Sorular</span></h2>
+<p class="text-gray-400 max-w-2xl mx-auto">Aklınıza takılan soruların cevaplarını burada bulabilirsiniz. Daha fazla yardım için Discord sunucumuza katılın.</p>
+</div>
+<div class="max-w-3xl mx-auto">
+<div class="space-y-4">
+<div class="accordion bg-[#131e29] rounded-lg overflow-hidden">
+<div class="accordion-header p-4 flex justify-between items-center cursor-pointer">
+<h3 class="font-semibold">Hile nasıl çalışır ve nasıl kurulur?</h3>
+<i class="ri-arrow-down-s-line accordion-icon"></i>
+</div>
+<div class="accordion-content px-4 pb-4">
+<p class="text-gray-400">Satın alma işleminizi tamamladıktan sonra Discord sunucumuzda size özel bir kanal açılacaktır. Bu kanalda detaylı kurulum talimatları ve indirme bağlantısı paylaşılacaktır. Kurulum süreci oldukça basittir ve 5 dakikadan az sürer. Kurulum sonrası oyun içinde F11 tuşuna basarak menüyü açabilir ve ayarlarınızı yapabilirsiniz.</p>
+</div>
+</div>
+<div class="accordion bg-[#131e29] rounded-lg overflow-hidden">
+<div class="accordion-header p-4 flex justify-between items-center cursor-pointer">
+<h3 class="font-semibold">Hile kullanırken ban riski var mı?</h3>
+<i class="ri-arrow-down-s-line accordion-icon"></i>
+</div>
+<div class="accordion-content px-4 pb-4">
+<p class="text-gray-400">AimVault hileleri, gelişmiş anti-detect teknolojisi ile tasarlanmıştır ve ban riski minimuma indirilmiştir. Ancak hiçbir hile %100 tespit edilemez değildir. Ban riskini en aza indirmek için kullanım talimatlarına uymanız, aşırı agresif ayarlardan kaçınmanız ve güncellemeleri düzenli olarak yapmanız önerilir. Ayrıca HWID Spoofer özelliğimiz sayesinde, olası bir ban durumunda bile yeni hesapla güvenle oynamaya devam edebilirsiniz.</p>
+</div>
+</div>
+<div class="accordion bg-[#131e29] rounded-lg overflow-hidden">
+<div class="accordion-header p-4 flex justify-between items-center cursor-pointer">
+<h3 class="font-semibold">Hangi ödeme yöntemlerini kabul ediyorsunuz?</h3>
+<i class="ri-arrow-down-s-line accordion-icon"></i>
+</div>
+<div class="accordion-content px-4 pb-4">
+<p class="text-gray-400">Şu anda Banka Havalesi, Papara, Ininal, Kripto Para (Bitcoin, Ethereum, USDT), PayPal ve kredi kartı ödemelerini kabul ediyoruz. Ödeme işleminizi Discord üzerinden güvenli bir şekilde gerçekleştirebilirsiniz. Tüm ödemeler şifrelenmiş kanallar üzerinden yapılmaktadır.</p>
+</div>
+</div>
+<div class="accordion bg-[#131e29] rounded-lg overflow-hidden">
+<div class="accordion-header p-4 flex justify-between items-center cursor-pointer">
+<h3 class="font-semibold">Hileniz tüm bilgisayarlarda çalışır mı?</h3>
+<i class="ri-arrow-down-s-line accordion-icon"></i>
+</div>
+<div class="accordion-content px-4 pb-4">
+<p class="text-gray-400">Evet, hilemiz Windows 10 ve Windows 11 işletim sistemlerinin tüm sürümlerinde çalışmaktadır. Minimum sistem gereksinimleri Valorant'ın kendi gereksinimleriyle aynıdır. Hilemiz optimizasyon odaklı tasarlanmıştır ve FPS düşüşüne neden olmaz. Ancak, bazı antivirüs programları hileyi engelleyebilir, bu durumda geçici olarak antivirüsünüzü devre dışı bırakmanız gerekebilir.</p>
+</div>
+</div>
+<div class="accordion bg-[#131e29] rounded-lg overflow-hidden">
+<div class="accordion-header p-4 flex justify-between items-center cursor-pointer">
+<h3 class="font-semibold">Satın aldıktan sonra destek alabilir miyim?</h3>
+<i class="ri-arrow-down-s-line accordion-icon"></i>
+</div>
+<div class="accordion-content px-4 pb-4">
+<p class="text-gray-400">Kesinlikle! Satın alma işleminizi tamamladıktan sonra Discord sunucumuzda size özel bir destek kanalı açılacaktır. Bu kanalda 7/24 teknik destek ekibimize ulaşabilir, sorularınızı sorabilir ve yardım alabilirsiniz. Ayrıca, VIP paketlerimizde öncelikli destek hizmeti sunulmaktadır.</p>
+</div>
+</div>
+<div class="accordion bg-[#131e29] rounded-lg overflow-hidden">
+<div class="accordion-header p-4 flex justify-between items-center cursor-pointer">
+<h3 class="font-semibold">Hile güncellemeleri ne sıklıkla yapılıyor?</h3>
+<i class="ri-arrow-down-s-line accordion-icon"></i>
+</div>
+<div class="accordion-content px-4 pb-4">
+<p class="text-gray-400">Hilemiz, Valorant'ın her güncellemesinden sonra hızlı bir şekilde güncellenmektedir. Genellikle oyun güncellemesinden sonraki 24 saat içinde hile de güncellenir. Büyük oyun güncellemelerinde bu süre biraz daha uzayabilir. Tüm güncellemeler otomatik olarak yapılır ve ek ücret gerektirmez. Güncelleme durumunu Discord sunucumuzdan takip edebilirsiniz.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-12 text-center">
+<p class="text-gray-400 mb-4">Başka sorularınız mı var?</p>
+<a href="#" class="discord-redirect inline-flex items-center justify-center gap-2 bg-[#5865F2] hover:bg-opacity-90 text-white font-semibold py-3 px-8 !rounded-button transition-all whitespace-nowrap">
+<i class="ri-discord-fill"></i>
+<span>Discord'da Bize Sorun</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Testimonials Section -->
+<section class="py-20 bg-[#131e29]">
+<div class="container mx-auto px-4">
+<div class="text-center mb-16">
+<h2 class="text-3xl md:text-4xl font-bold mb-4">Kullanıcı <span class="text-primary">Yorumları</span></h2>
+<p class="text-gray-400 max-w-2xl mx-auto">Binlerce mutlu kullanıcımızın deneyimlerini okuyun. İşte onların AimVault hakkında söyledikleri.</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="feature-card card-hover p-6 rounded-lg">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-xl font-bold text-white">
+YN
+</div>
+<div>
+<h4 class="font-semibold">yon</h4>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-300">"3 aydır AimVault kullanıyorum ve kesinlikle memnunum. Immortal rankına kadar yükseldim. Hiçbir ban sorunu yaşamadım, destek ekibi her zaman yardımcı oluyor. Özellikle aimbot ayarları çok iyi düşünülmüş, doğal görünüyor."</p>
+</div>
+<div class="feature-card card-hover p-6 rounded-lg">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-xl font-bold text-white">
+FY
+</div>
+<div>
+<h4 class="font-semibold">fony</h4>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-half-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-300">"ESP ve radar özellikleri inanılmaz işe yarıyor. Artık hiçbir baskına hazırlıksız yakalanmıyorum. Kurulum çok basitti ve performans kaybı yaşamadım. Fiyat/performans olarak kesinlikle değer. Tek eleştirim bazen güncellemeler biraz gecikebiliyor."</p>
+</div>
+<div class="feature-card card-hover p-6 rounded-lg">
+<div class="flex items-center gap-3 mb-4">
+<div class="w-12 h-12 rounded-full bg-gray-700 flex items-center justify-center text-xl font-bold text-white">
+AA
+</div>
+<div>
+<h4 class="font-semibold">alercia</h4>
+<div class="flex text-yellow-400">
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+<i class="ri-star-fill"></i>
+</div>
+</div>
+</div>
+<p class="text-gray-300">"Daha önce başka hileler denedim ve hep ban yedim. AimVault ile 2 aydır sorunsuz oynuyorum. Skin changer özelliği harika, tüm premium skinleri kullanabiliyorum. Discord'daki destek ekibi çok ilgili, her soruma anında yanıt aldım."</p>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20 bg-[#0f1923] relative overflow-hidden">
+<div class="absolute inset-0" style="background-image: url('https://r2.fakecrime.bio/uploads/0817c02f-0b81-4b00-a7d5-ccc5f456be01.jpeg'); background-size: cover; background-position: center; opacity: 0.2;"></div>
+<div class="container mx-auto px-4 relative z-10">
+<div class="max-w-3xl mx-auto text-center">
+<h2 class="text-3xl md:text-5xl font-bold mb-6">Hemen Şimdi <span class="text-primary">Rekabette Öne Geçin</span></h2>
+<p class="text-xl text-gray-300 mb-8">Valorant'ta zirveye ulaşmanın en hızlı yolu. AimVault'nün gelişmiş hileleri ile oyun deneyiminizi bir üst seviyeye taşıyın.</p>
+<div class="flex flex-col sm:flex-row gap-4 justify-center">
+<a href="#pricing" class="bg-primary hover:bg-opacity-90 text-white font-semibold py-3 px-8 !rounded-button shadow-lg shadow-primary/20 transition-all whitespace-nowrap">
+Hemen Satın Al
+</a>
+<a href="#" class="discord-redirect bg-white bg-opacity-10 hover:bg-opacity-20 text-white font-semibold py-3 px-8 !rounded-button border border-white border-opacity-20 transition-all whitespace-nowrap">
+  <i class="ri-discord-fill mr-2"></i>
+  Discord'a Katıl
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- Footer -->
+<footer class="bg-[#0a141d] py-12">
+<div class="container mx-auto px-4">
+<div class="grid md:grid-cols-4 gap-8 mb-12">
+<div>
+<a href="#" class="text-3xl font-bold mr-8 bg-gradient-to-r from-pink-500 via-purple-500 to-indigo-500 bg-clip-text text-transparent animate-text">aim.vault</a>
+<p class="text-gray-400 mb-4">Valorant için en gelişmiş ve güvenli hile çözümleri. 2025'in lider Valorant hile sağlayıcısı.</p>
+<div class="flex space-x-4">
+<a href="#" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+<i class="ri-discord-fill ri-lg text-gray-300"></i>
+</a>
+<a href="#" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+<i class="ri-instagram-fill ri-lg text-gray-300"></i>
+</a>
+<a href="#" class="flex items-center justify-center w-10 h-10 rounded-full bg-gray-800 hover:bg-gray-700 transition-colors">
+<i class="ri-telegram-fill ri-lg text-gray-300"></i>
+</a>
+</div>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Hızlı Linkler</h3>
+<ul class="space-y-2">
+<li><a href="#features" class="text-gray-400 hover:text-primary transition-colors">Özellikler</a></li>
+<li><a href="#pricing" class="text-gray-400 hover:text-primary transition-colors">Fiyatlandırma</a></li>
+<li><a href="#faq" class="text-gray-400 hover:text-primary transition-colors">SSS</a></li>
+<li><a href="#security" class="text-gray-400 hover:text-primary transition-colors">Güvenlik</a></li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">İletişim</h3>
+<ul class="space-y-2">
+<li class="discord-redirect flex items-center gap-2 text-gray-400">
+<i class="ri-discord-fill"></i>
+<span>Discord</span>
+</li>
+<li class="flex items-center gap-2 text-gray-400">
+<i class="ri-mail-line"></i>
+<span>info@aimvault.com</span>
+</li>
+<li class="flex items-center gap-2 text-gray-400">
+<i class="ri-time-line"></i>
+<span>7/24 Destek</span>
+</li>
+</ul>
+</div>
+<div>
+<h3 class="text-lg font-semibold mb-4">Ödeme Yöntemleri</h3>
+<div class="flex flex-wrap gap-3">
+<div class="flex items-center justify-center w-10 h-10 bg-gray-800 rounded">
+<i class="ri-bank-card-fill ri-lg text-gray-300"></i>
+</div>
+<div class="flex items-center justify-center w-10 h-10 bg-gray-800 rounded">
+<i class="ri-paypal-fill ri-lg text-gray-300"></i>
+</div>
+<div class="flex items-center justify-center w-10 h-10 bg-gray-800 rounded">
+<i class="ri-bitcoin-fill ri-lg text-gray-300"></i>
+</div>
+<div class="flex items-center justify-center w-10 h-10 bg-gray-800 rounded">
+<i class="ri-mastercard-fill ri-lg text-gray-300"></i>
+</div>
+<div class="flex items-center justify-center w-10 h-10 bg-gray-800 rounded">
+<i class="ri-visa-fill ri-lg text-gray-300"></i>
+</div>
+</div>
+</div>
+</div>
+<div class="pt-8 border-t border-gray-800 text-center text-gray-500 text-sm">
+<p>© 2025 AimVault. Tüm hakları saklıdır.</p>
+<p class="mt-2">Valorant, Riot Games Inc.'in tescilli markasıdır. Bu site Riot Games Inc. ile bağlantılı değildir.</p>
+<p class"mt-2">Thema by ewgsta</p>
+</div>
+</div>
+</footer>
+<!-- Toast Notification -->
+<div id="toast" class="toast">
+<i class="ri-information-line mr-2"></i>
+<span id="toastMessage">Discord sunucumuza yönlendiriliyorsunuz...</span>
+</div>
+<!-- Scripts -->
+<script id="mobileMenuScript">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuButton = document.getElementById('mobileMenuButton');
+const mobileMenu = document.getElementById('mobileMenu');
+mobileMenuButton.addEventListener('click', function() {
+mobileMenu.classList.toggle('hidden');
+});
+});
+</script>
+<script id="accordionScript">
+document.addEventListener('DOMContentLoaded', function() {
+  const accordions = document.querySelectorAll('.accordion');
+  accordions.forEach(accordion => {
+    const header = accordion.querySelector('.accordion-header');
+    const content = accordion.querySelector('.accordion-content');
+    
+    // Close all accordions initially
+    accordion.classList.remove('accordion-active');
+    
+    header.addEventListener('click', function() {
+      // Close all other accordions
+      accordions.forEach(otherAccordion => {
+        if (otherAccordion !== accordion) {
+          otherAccordion.classList.remove('accordion-active');
+        }
+      });
+      
+      // Toggle current accordion
+      accordion.classList.toggle('accordion-active');
+    });
+  });
+  
+  // Add animation delay to feature cards
+  const featureCards = document.querySelectorAll('.feature-card');
+  featureCards.forEach((card, index) => {
+    card.style.setProperty('--card-index', index);
+  });
+});
+</script>
+<script id="smoothScrollScript">
+document.addEventListener('DOMContentLoaded', function() {
+const links = document.querySelectorAll('a[href^="#"]');
+links.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const targetId = this.getAttribute('href');
+if (targetId === '#') return;
+const targetElement = document.querySelector(targetId);
+if (targetElement) {
+window.scrollTo({
+top: targetElement.offsetTop - 80,
+behavior: 'smooth'
+});
+// Close mobile menu if open
+const mobileMenu = document.getElementById('mobileMenu');
+if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
+mobileMenu.classList.add('hidden');
+}
+}
+});
+});
+});
+</script>
+<script id="discordRedirectScript">
+document.addEventListener('DOMContentLoaded', function() {
+const discordButtons = document.querySelectorAll('.discord-redirect');
+const toast = document.getElementById('toast');
+const toastMessage = document.getElementById('toastMessage');
+discordButtons.forEach(button => {
+button.addEventListener('click', function(e) {
+e.preventDefault();
+toastMessage.textContent = 'Discord sunucumuza yönlendiriliyorsunuz...';
+toast.classList.add('show');
+setTimeout(() => {
+window.location.href = 'https://discord.gg/example';
+}, 2000);
+setTimeout(() => {
+toast.classList.remove('show');
+}, 5000);
+});
+});
+});
+</script>
+<script id="parallaxScript">
+document.addEventListener('DOMContentLoaded', function() {
+const parallaxElements = document.querySelectorAll('.parallax');
+window.addEventListener('mousemove', function(e) {
+const x = e.clientX / window.innerWidth;
+const y = e.clientY / window.innerHeight;
+parallaxElements.forEach(element => {
+const speed = element.getAttribute('data-speed') || 20;
+const moveX = (x - 0.5) * speed;
+const moveY = (y - 0.5) * speed;
+element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+});
+});
+});
+</script>
+</body>
+</html>
